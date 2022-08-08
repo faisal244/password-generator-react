@@ -23,6 +23,7 @@ export const PasswordGeneratorForm = ({ title }) => {
 	const [isUppercase, setIsUppercase] = useState(false);
 	const [isNumeric, setIsNumeric] = useState(false);
 	const [isSpecial, setIsSpecial] = useState(false);
+	const [errorMessage, setErrorMessage] = useState();
 
 	const handlePasswordLengthChange = (event) => {
 		const value = event.target.value;
@@ -56,9 +57,10 @@ export const PasswordGeneratorForm = ({ title }) => {
 				isNumeric,
 				isSpecial,
 			});
+			setErrorMessage();
 			console.log(generatedPassword);
 		} catch (error) {
-			console.log(error.message);
+			setErrorMessage(error.message);
 		}
 	};
 	return (
@@ -139,9 +141,6 @@ export const PasswordGeneratorForm = ({ title }) => {
 									label="Contains special characters"
 								/>
 							</FormGroup>
-							<FormHelperText>
-								Please select a minimum of 2 options
-							</FormHelperText>
 						</FormControl>
 					</Box>
 					<Box sx={{ textAlign: "center" }}>
@@ -153,6 +152,13 @@ export const PasswordGeneratorForm = ({ title }) => {
 							Generate Password
 						</Button>
 					</Box>
+					{errorMessage && (
+						<Box>
+							<FormHelperText sx={{ textAlign: "center", color: "red" }}>
+								{errorMessage}
+							</FormHelperText>
+						</Box>
+					)}
 				</form>
 			</Container>
 		</Container>
