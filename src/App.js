@@ -20,7 +20,6 @@ export const App = () => {
 			justifyContent="space-evenly"
 			alignItems="stretch"
 			spacing={8}
-			// sx={getStyles()}
 			sx={{
 				backgroundColor: "#A5FFD6",
 				height: "100vh",
@@ -33,7 +32,6 @@ export const App = () => {
 			<Box>
 				<PasswordGeneratorForm title="Please complete password criteria" />
 			</Box>
-			<div>Footer</div>
 		</Stack>
 	);
 };
