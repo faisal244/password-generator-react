@@ -1,5 +1,11 @@
 import Stack from "@mui/material/Stack";
 import { Banner } from "./components/Banner";
+import Container from "@mui/material/Container";
+import Typography from "@mui/material/Typography";
+
+import Box from "@mui/material/Box";
+
+import { PasswordGeneratorForm } from "./components/PasswordGeneratorForm";
 
 export const App = () => {
 	// const isLoggedIn = false;
@@ -20,8 +26,13 @@ export const App = () => {
 				height: "100vh",
 			}}
 		>
-			<Banner title="Password Generator" subTitle="Protect ya neck" />
-			<div>Main</div>
+			<Box>
+				<Banner title="Password Generator" subTitle="Protect ya neck" />
+			</Box>
+
+			<Box>
+				<PasswordGeneratorForm title="Please complete password criteria" />
+			</Box>
 			<div>Footer</div>
 		</Stack>
 	);
