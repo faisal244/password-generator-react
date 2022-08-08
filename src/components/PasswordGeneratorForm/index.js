@@ -15,6 +15,7 @@ import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
 // import LockIcon from "@mui/icons-material/Lock";
 import LockOpenIcon from "@mui/icons-material/LockOpen";
+import { passwordGenerator } from "../../utils/passwordGenerator";
 
 export const PasswordGeneratorForm = ({ title }) => {
 	const [passwordLength, setPasswordLength] = useState("");
@@ -46,12 +47,19 @@ export const PasswordGeneratorForm = ({ title }) => {
 
 	const handleFormSubmit = (event) => {
 		event.preventDefault();
-		console.log("submit");
-		console.log("passwordLength", passwordLength);
-		console.log("isLowercase", isLowercase);
-		console.log("isUppercase", isUppercase);
-		console.log("isNumeric", isNumeric);
-		console.log("isSpecial", isSpecial);
+
+		try {
+			const generatedPassword = passwordGenerator({
+				passwordLength,
+				isLowercase,
+				isUppercase,
+				isNumeric,
+				isSpecial,
+			});
+			console.log(generatedPassword);
+		} catch (error) {
+			console.log(error.message);
+		}
 	};
 	return (
 		<Container
@@ -150,5 +158,3 @@ export const PasswordGeneratorForm = ({ title }) => {
 		</Container>
 	);
 };
-
-// stopped watching video at 01:23:23
